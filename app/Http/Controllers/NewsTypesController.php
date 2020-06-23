@@ -7,6 +7,10 @@ use App\NewsType;
 
 class NewsTypesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +19,7 @@ class NewsTypesController extends Controller
     public function index()
     {
         $types = NewsType::orderBy('type','asc')->with('subType')->where('p_id', 0)->paginate(5);
-        return view('newsType.allNewsType')->with('types', $types);
+        return view('admin.newsType.allNewsType')->with('types', $types);
     }
 
     /**
@@ -26,7 +30,7 @@ class NewsTypesController extends Controller
     public function create()
     {
         $types = NewsType::all()->where('p_id', '0');
-        return view('newsType.addNewsType')->with('types', $types);
+        return view('admin.newsType.addNewsType')->with('types', $types);
     }
 
     /**
@@ -70,7 +74,7 @@ class NewsTypesController extends Controller
             'types' => NewsType::where('p_id', $id)->paginate(5),
             'cat' => NewsType::find($id)
         );
-        return view('newsType.selectedNewsType')->with($data);
+        return view('admin.newsType.selectedNewsType')->with($data);
     }
 
     /**

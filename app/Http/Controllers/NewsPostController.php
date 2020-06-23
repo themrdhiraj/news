@@ -10,6 +10,11 @@ use App\User;
 
 class NewsPostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +23,7 @@ class NewsPostController extends Controller
     public function index()
     {
         $posts = News::join('users', 'users.id', '=', 'news.user_id')->orderBy('news.id', 'desc')->select('news.*', 'users.name')->paginate(10);
-        return view('newsPost.allNewsPost')->with('posts', $posts);
+        return view('admin.newsPost.allNewsPost')->with('posts', $posts);
     }
 
     /**
@@ -31,7 +36,7 @@ class NewsPostController extends Controller
         $data = array(
             'category' => NewsType::with('subType')->where('p_id', 0)->get(),
         );
-        return view('newsPost.addNewsPost')->with($data);
+        return view('admin.newsPost.addNewsPost')->with($data);
     }
 
     /**
@@ -113,7 +118,7 @@ class NewsPostController extends Controller
             'post'      => $post = News::find($id),
             'category'  => NewsType::with('subType')->where('p_id', 0)->get()
         );
-        return view('newsPost.editNewsPost')->with($data);
+        return view('admin.newsPost.editNewsPost')->with($data);
     }
 
     /**
