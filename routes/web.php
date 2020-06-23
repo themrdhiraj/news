@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'UserViewController@index');
+Route::get('/category', 'UserViewController@category');
 
 Auth::routes(['register' => false]);
 
