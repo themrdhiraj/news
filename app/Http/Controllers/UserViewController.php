@@ -25,9 +25,15 @@ class UserViewController extends Controller
 
     public function category()
     {
+        return 'hi';
+    }
+
+    public function categoryById($id)
+    {
         $data = array(
-            'news' => News::where('newsStatus', 1)->join('users', 'users.id', '=', 'news.user_id')->select('news.newsTitle', 'users.name')->get(),
-            'category'  => NewsType::with('subType')->where('p_id', 0)->get()
+            'news' => News::where('newsStatus', 1)->where('newsCategory', $id)->join('users', 'users.id', '=', 'news.user_id')->select('news.*','users.name')->get(),
+            'category'  => NewsType::with('subType')->where('p_id', 0)->get(),
+            'cat' => NewsType::find($id)
         );
         return view('user.category')->with($data);
     }

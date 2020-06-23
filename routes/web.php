@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'UserViewController@index');
 Route::get('/category', 'UserViewController@category');
+Route::get('/category/{id}', 'UserViewController@categoryById');
 
 Auth::routes(['register' => false]);
 
