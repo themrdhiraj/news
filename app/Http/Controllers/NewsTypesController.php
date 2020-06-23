@@ -14,7 +14,7 @@ class NewsTypesController extends Controller
      */
     public function index()
     {
-        $types = NewsType::orderBy('id','desc')->with('subType')->where('p_id', 0)->paginate(5);
+        $types = NewsType::orderBy('type','asc')->with('subType')->where('p_id', 0)->paginate(5);
         return view('newsType.allNewsType')->with('types', $types);
     }
 
@@ -81,7 +81,7 @@ class NewsTypesController extends Controller
      */
     public function edit($id)
     {
-        return $id;
+        
     }
 
     /**

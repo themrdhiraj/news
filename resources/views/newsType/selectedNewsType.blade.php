@@ -1,10 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'title' => $cat->type
+])
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
 			<div class="card">
-				<div class="card-header">{{__('Delete Types') }} <span class="badge badge-info float-right">{{$cat->type}}</span></div>
+				<div class="card-header">{{__('Delete Sub-category') }} <span class="badge badge-info float-right">{{$cat->type}}</span></div>
 				<div class="card-body">
 					<div class="responsive">
 						<table class="table">
@@ -22,7 +24,7 @@
 								@endphp
 								@foreach ($types as $type)
 								<tr>
-									<td>{{ $i++ }}</td>
+									<td>{{ $i++ }}.</td>
 									<td>
 										{{$type->type}}
 									</td>
@@ -40,7 +42,7 @@
 								@endforeach
 								@else
 								<tr>
-									<td colspan="2">No data</td>
+									<td colspan="3">No sub-category. <a href="/types/create" class="btn btn-primary float-right">Add Sub-category?</a></td>
 								</tr>
 								@endif
 							</tbody>

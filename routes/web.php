@@ -21,4 +21,5 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('types', 'NewsTypesController');
+Route::resource('types', 'NewsTypesController')->except('edit');
+Route::resource('posts', 'NewsPostController');

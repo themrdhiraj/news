@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.app', [
+    'title' => 'All Category'
+])
 @section('content')
 <div class="container">
 	<div class="row justify-content-center">
 		<div class="col-md-6">
 			<div class="card">
-				<div class="card-header">{{__('All Types')}}
-							<small class="form-text text-danger">* Deleting Types will also delete sub-types.</small></div>
+				<div class="card-header">{{__('All Category')}}
+				<small class="form-text text-danger">* Deleting Category will also delete Sub-category.</small></div>
 				<div class="card-body">
 					<div class="responsive">
 						<table class="table">
@@ -23,7 +25,7 @@
 								@endphp
 								@foreach ($types as $type)
 								<tr>
-									<td>{{ $i++ }}</td>
+									<td>{{ $i++ }}.</td>
 									<td>
 										{{$type->type}}
 										@foreach ($type->subType as $sub)
@@ -37,7 +39,7 @@
 											@method('DELETE')
 											<div class="btn-group">
 												<a href="/types/{{ $type->id }}" class="btn btn-primary">Expand</a>
-												<button class="btn btn-dark">Delete</button>
+												<button class="btn btn-dark" onclick="confirm('Are you sure?')">Delete</button>
 											</div>
 										</form>
 									</td>
@@ -46,7 +48,7 @@
 								@endforeach
 								@else
 								<tr>
-									<td colspan="2">No data</td>
+									<td colspan="3">No data <a href="/types/create" class="btn btn-primary float-right">Add Category?</a></td>
 								</tr>
 								@endif
 							</tbody>
