@@ -39,12 +39,12 @@
 					<div class="col-sm-6 p-r-25 p-r-15-sr991">
 						<!-- Item latest -->
 						<div class="m-b-45">
-							<a href="blog-detail-01.html" class="wrap-pic-w hov1 trans-03">
+							<a href="/news/{{$new->id}}" class="wrap-pic-w hov1 trans-03">
 								<img src="/storage/newsImages/{{$new->newsImage}}" alt="IMG">
 							</a>
 							<div class="p-t-16">
 								<h5 class="p-b-5">
-								<a href="blog-detail-01.html" class="f1-m-3 cl2 hov-cl10 trans-03">{{$new->newsTitle}}
+								<a href="/news/{{$new->id}}" class="f1-m-3 cl2 hov-cl10 trans-03">{{$new->newsTitle}}
 								</a>
 								</h5>
 								<span class="cl8">
@@ -141,41 +141,6 @@
 						<a href="#">
 							<img class="max-w-full" src="{{ asset("assets") }}/images/banner-02.jpg" alt="IMG">
 						</a>
-					</div>
-					
-					<!-- Tag -->
-					<div>
-						<div class="how2 how2-cl4 flex-s-c m-b-30">
-							<h3 class="f1-m-2 cl3 tab01-title">
-							Tags
-							</h3>
-						</div>
-						<div class="flex-wr-s-s m-rl--5">
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Fashion
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Lifestyle
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Denim
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Streetstyle
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Crafts
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Magazine
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								News
-							</a>
-							<a href="#" class="flex-c-c size-h-2 bo-1-rad-20 bocl12 f1-s-1 cl8 hov-btn2 trans-03 p-rl-20 p-tb-5 m-all-5">
-								Blogs
-							</a>
-						</div>
 					</div>
 				</div>
 			</div>
