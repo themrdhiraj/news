@@ -6,7 +6,25 @@
                 <img src="{{ asset('assets') }}/images/icons/logo-01.png" alt="LOGO">
             </a>
             <ul class="main-menu">
-                <li><a href="/category">All</a></li>
+                <li>
+                    <a href="/category">All</a>
+                    <ul class="sub-menu">
+                        @if (count($category))
+                        @foreach ($category as $cats)
+                        <li>
+                            <a href="/category/{{$cats->id}}">{{$cats->type}}</a>
+                            @if (count($cats->subType))
+                            <ul class="sub-menu">
+                                @foreach ($cats->subType as $sub)
+                                <li><a href="/category/{{$sub->id}}">{{$sub->type}}</a></li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </li>
+                        @endforeach
+                        @endif
+                    </ul>
+                </li>
                 @if (count($category))
                 @foreach ($category as $cats)
                 <li class="main-menu">

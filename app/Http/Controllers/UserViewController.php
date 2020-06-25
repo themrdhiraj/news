@@ -27,7 +27,6 @@ class UserViewController extends Controller
     {
         //show all category here
         $data = array(
-            'news'      => News::where('newsStatus', 1)->orderBy('news.id', 'desc')->select('news.*', 'users.name')->join('users', 'users.id', '=', 'news.user_id')->limit(10)->get(),
             'category'  => NewsType::with('subType')->where('p_id', 0)->limit(7)->get(),
         );
         return view('user.allCategory')->with($data);
@@ -41,6 +40,15 @@ class UserViewController extends Controller
             'cat' => NewsType::find($id)
         );
         return view('user.categoryById')->with($data);
+    }
+
+    public function subCategory($id)
+    {
+        $data = array(
+            'category'  => NewsType::with('subType')->where('p_id', 0)->get(),
+            'subCategory'  => NewsType::with('subType')->where('p_id', $id)->get(),
+        );
+        return view('user.subCategory')->with($data);
     }
 
     public function news($id)
