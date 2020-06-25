@@ -7,7 +7,7 @@
 		<div class="col-md-6">
 			<div class="card">
 				<div class="card-header">{{__('All Category')}}
-				<small class="form-text text-danger">* Deleting Category will also delete Sub-category.</small></div>
+				<small class="form-text text-danger">* Deleting Category will also delete Sub-category. And atleast 3 category needed.</small></div>
 				<div class="card-body">
 					<div class="responsive">
 						<table class="table">
