@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\NewsType;
 
 class NewsTypesController extends Controller
@@ -43,9 +44,34 @@ class NewsTypesController extends Controller
     {
         $validatedData = $request->validate([
             'type' => 'required',
+            'catImage'     => 'required|max:1999'
         ]);
 
+        //handle file upload
+        if ($request->hasFile('catImage')) {
+
+            //get file name with the extension
+            $fileNameWithExt = $request->file('catImage')->getClientOriginalName();
+
+            //get just file name
+            //$filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+
+            //get just ext
+            $extension = $request->file('catImage')->getClientOriginalExtension();
+
+            //file name to store
+
+            $fileNameToStore = $request->type.date('Ymdhi').'.'.$extension;
+
+            //upload image
+            $path = $request->file('catImage')->storeAs('public/catImages', $fileNameToStore);
+        }else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+
+
         $type = new NewsType;
+        $type->catImages = $fileNameToStore;
         $type->type = $request->input('type');
         if ($request->input('p_id')) {
             $type->p_id = $request->input('p_id');
@@ -109,6 +135,10 @@ class NewsTypesController extends Controller
     public function destroy($id)
     {
         $type = NewsType::find($id);
+
+        if ($type->catImages != 'noimage.jpg') {
+            Storage::delete('public/catImages/'.$type->catImages);
+        }
 
         $success = $type->delete();
 

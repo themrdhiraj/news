@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header">{{__('Add News Category')}}<a href="#help"><i class="fa fa-question-circle float-right"></i></a></div>
 				<div class="card-body">
-					<form action="/types" method="POST">
+					<form action="/types" method="POST" enctype="multipart/form-data">
 						@csrf
 
 						<div class="form-group">
@@ -31,6 +31,11 @@
 									<option disabled selected>No Category added yet!</option>
 								@endif
 							</select>
+						</div>
+
+						<div class="form-group">
+							<label for="type">News Cover Image</label>
+							<input type="file" class="form-control-file" name="catImage">
 						</div>
 
 						<button type="submit" class="btn btn-primary">Submit</button>
